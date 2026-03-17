@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandy Asawaprecha — UX Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#FFFFFF;
+  --off:#F7F7F5;
+  --line:#E4E4E0;
+  --ink:#111110;
+  --mid:#888884;
+  --accent:#2A5C45;
+  --accent-light:#EAF1ED;
+  --serif:'Libre Baskerville',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+}
+body{font-family:var(--sans);background:var(--white);color:var(--ink);font-weight:300;line-height:1.6}
+
+/* NAV */
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.75rem 4rem;
+  border-bottom:1px solid var(--line);
+}
+.logo{font-family:var(--serif);font-size:1.05rem;letter-spacing:0.01em}
+.logo span{color:var(--mid);font-style:italic}
+.nav-links{display:flex;gap:2.5rem}
+.nav-links a{
+  text-decoration:none;color:var(--mid);font-size:0.75rem;
+  letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s
+}
+.nav-links a:hover{color:var(--ink)}
+
+/* HERO */
+.hero{
+  padding:7rem 4rem 6rem;
+  border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end
+}
+.hero-label{
+  font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.5rem;font-weight:500
+}
+.hero h1{
+  font-family:var(--serif);
+  font-size:clamp(2.8rem,5vw,4.8rem);
+  line-height:1.05;letter-spacing:-0.02em;
+  font-weight:400;
+}
+.hero h1 i{color:var(--mid)}
+.hero-right{padding-bottom:0.5rem}
+.hero-bio{
+  font-size:1rem;color:var(--mid);line-height:1.9;
+  max-width:420px;margin-bottom:2.5rem
+}
+.hero-bio strong{color:var(--ink);font-weight:500}
+.cta-row{display:flex;gap:1rem;align-items:center}
+.btn-primary{
+  display:inline-block;text-decoration:none;
+  background:var(--ink);color:var(--white);
+  padding:0.8rem 2rem;font-size:0.8rem;
+  letter-spacing:0.08em;text-transform:uppercase;
+  transition:background 0.2s
+}
+.btn-primary:hover{background:var(--accent)}
+.btn-ghost{
+  font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--mid);text-decoration:none;border-bottom:1px solid var(--line);
+  padding-bottom:2px;transition:color 0.2s,border-color 0.2s
+}
+.btn-ghost:hover{color:var(--ink);border-color:var(--ink)}
+
+/* TOOLS ROW */
+.tools-row{
+  padding:1.5rem 4rem;
+  border-bottom:1px solid var(--line);
+  display:flex;gap:2rem;align-items:center
+}
+.tools-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);white-space:nowrap}
+.tools-list{display:flex;flex-wrap:wrap;gap:0.5rem}
+.tool-tag{
+  font-size:0.7rem;letter-spacing:0.06em;
+  padding:0.3rem 0.75rem;
+  background:var(--off);color:var(--mid);
+  border:1px solid var(--line)
+}
+
+/* SECTION */
+.section{padding:5rem 4rem}
+.section+.section{border-top:1px solid var(--line)}
+.s-meta{display:flex;align-items:baseline;gap:1.5rem;margin-bottom:3rem}
+.s-num{font-family:var(--serif);font-size:0.85rem;color:var(--line);font-style:italic}
+.s-title{font-family:var(--serif);font-size:1.7rem;font-weight:400;letter-spacing:-0.01em}
+
+/* WORK */
+.work-list{display:flex;flex-direction:column;gap:0}
+.work-item{
+  display:grid;grid-template-columns:60px 1fr auto;
+  gap:2rem;align-items:start;
+  padding:2.5rem 0;
+  border-bottom:1px solid var(--line);
+  cursor:pointer;
+  transition:background 0.15s
+}
+.work-item:first-child{border-top:1px solid var(--line)}
+.work-item:hover .work-arrow{transform:translateX(4px)}
+.work-idx{font-family:var(--serif);font-size:0.9rem;color:var(--line);font-style:italic;padding-top:0.25rem}
+.work-tag{
+  display:inline-block;
+  font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:0.6rem;font-weight:500
+}
+.work-name{font-family:var(--serif);font-size:1.35rem;font-weight:400;margin-bottom:0.5rem;letter-spacing:-0.01em}
+.work-desc{font-size:0.88rem;color:var(--mid);line-height:1.7;max-width:520px;margin-bottom:1rem}
+.work-chips{display:flex;flex-wrap:wrap;gap:0.4rem}
+.chip{
+  font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;
+  padding:0.25rem 0.6rem;
+  border:1px solid var(--line);color:var(--mid)
+}
+.work-preview{
+  width:160px;
+  aspect-ratio:4/3;
+  background:var(--off);
+  border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.65rem;color:var(--mid);letter-spacing:0.08em;text-align:center;
+  flex-shrink:0
+}
+.work-arrow{
+  font-size:0.9rem;color:var(--mid);
+  transition:transform 0.2s;align-self:center
+}
+
+/* PROCESS */
+.process-bg{background:var(--off)}
+.process-steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+  border:1px solid var(--line);
+  margin-top:2rem
+}
+.p-step{
+  padding:2rem 1.75rem;
+  border-right:1px solid var(--line)
+}
+.p-step:last-child{border-right:none}
+.p-step-num{
+  font-family:var(--serif);font-size:0.8rem;color:var(--accent);
+  font-style:italic;margin-bottom:1rem
+}
+.p-step-name{font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:500;margin-bottom:0.6rem}
+.p-step-desc{font-size:0.82rem;color:var(--mid);line-height:1.7}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1.8fr;gap:5rem;align-items:start}
+.about-card{
+  background:var(--off);
+  border:1px solid var(--line);
+  padding:2rem;
+  position:sticky;top:2rem
+}
+.avatar-block{
+  width:100%;aspect-ratio:1;
+  background:var(--accent-light);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.5rem;
+  font-family:var(--serif);font-size:3rem;color:var(--accent);
+  font-style:italic;opacity:0.7
+}
+.about-name{font-family:var(--serif);font-size:1.1rem;font-weight:400;margin-bottom:0.25rem}
+.about-role{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid)}
+.about-divider{margin:1.25rem 0;border:none;border-top:1px solid var(--line)}
+.about-stat{display:flex;justify-content:space-between;margin-bottom:0.6rem;font-size:0.82rem}
+.about-stat-key{color:var(--mid)}
+.about-stat-val{font-weight:500;color:var(--ink)}
+.about-body{font-size:0.95rem;color:var(--mid);line-height:1.9;margin-bottom:1.75rem}
+.skills-section h4{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:1rem}
+.skills-grid{display:flex;flex-wrap:wrap;gap:0.5rem}
+.skill{
+  font-size:0.75rem;padding:0.4rem 0.9rem;
+  background:var(--accent-light);color:var(--accent);
+  border:1px solid rgba(42,92,69,0.15)
+}
+
+/* CONTACT */
+.contact-split{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.contact-heading{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:400;line-height:1.1;letter-spacing:-0.02em}
+.contact-heading i{color:var(--mid)}
+.contact-list{display:flex;flex-direction:column;gap:0}
+.contact-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.25rem 0;
+  border-bottom:1px solid var(--line);
+  text-decoration:none;color:var(--ink);
+  transition:color 0.2s
+}
+.contact-item:first-child{border-top:1px solid var(--line)}
+.contact-item:hover{color:var(--accent)}
+.contact-item:hover .c-arrow{transform:translateX(3px)}
+.c-label{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500}
+.c-value{font-size:0.85rem;color:var(--mid)}
+.c-arrow{font-size:0.8rem;transition:transform 0.2s}
+
+footer{
+  padding:1.75rem 4rem;
+  border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;
+  font-size:0.72rem;color:var(--mid);letter-spacing:0.05em
+}
+
+@media(max-width:768px){
+  nav,section.section,.tools-row,footer{padding-left:1.5rem;padding-right:1.5rem}
+  .hero{grid-template-columns:1fr;padding:4rem 1.5rem 3rem;gap:2rem}
+  .work-item{grid-template-columns:40px 1fr;gap:1rem}
+  .work-preview,.work-arrow{display:none}
+  .process-steps{grid-template-columns:1fr 1fr}
+  .p-step{border-bottom:1px solid var(--line)}
+  .about-grid,.contact-split{grid-template-columns:1fr}
+  .about-card{position:static}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Sandy Asawaprecha <span>— UX</span></div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#process">Process</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Junior UX Designer · Open to opportunities</div>
+    <h1>Wireframes<br>that <i>think.</i><br>Prototypes<br>that <i>feel.</i></h1>
+  </div>
+  <div class="hero-right">
+    <p class="hero-bio">
+      I'm Sandy — a junior UX designer who specialises in <strong>wireframing and prototyping.</strong> I turn ambiguous problems into clear, testable experiences through careful structure and thoughtful interaction design.
+    </p>
+    <div class="cta-row">
+      <a class="btn-primary" href="#work">See case studies</a>
+      <a class="btn-ghost" href="#contact">Get in touch →</a>
+    </div>
+  </div>
+</div>
+
+<div class="tools-row">
+  <span class="tools-label">Tools</span>
+  <div class="tools-list">
+    <span class="tool-tag">Figma</span>
+    <span class="tool-tag">FigJam</span>
+    <span class="tool-tag">Protopie</span>
+    <span class="tool-tag">Maze</span>
+    <span class="tool-tag">Notion</span>
+    <span class="tool-tag">Miro</span>
+    <span class="tool-tag">Zeplin</span>
+  </div>
+</div>
+
+<!-- WORK -->
+<section class="section" id="work">
+  <div class="s-meta">
+    <span class="s-num">i.</span>
+    <span class="s-title">Selected work</span>
+  </div>
+  <div class="work-list">
+
+    <div class="work-item">
+      <div class="work-idx">01</div>
+      <div class="work-body">
+        <div class="work-tag">Mobile App · End-to-end</div>
+        <div class="work-name">MedRemind — Medication Tracker</div>
+        <p class="work-desc">Redesigned the onboarding flow and core tracker interface for an elderly care app. Reduced task completion time by 41% through iterative low-fi wireframing and user-tested high-fi prototypes.</p>
+        <div class="work-chips">
+          <span class="chip">Wireframing</span>
+          <span class="chip">Interactive Prototype</span>
+          <span class="chip">Usability Testing</span>
+          <span class="chip">Figma</span>
+        </div>
+      </div>
+      <div class="work-preview">[ Prototype preview ]</div>
+      <div class="work-arrow">→</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-idx">02</div>
+      <div class="work-body">
+        <div class="work-tag">Web Platform · Concept</div>
+        <div class="work-name">Verdant — Sustainable Shopping</div>
+        <p class="work-desc">Conceived and prototyped a browser extension that surfaces eco-impact scores during online checkout. Created 60+ wireframe screens mapping the full user journey before high-fidelity handoff.</p>
+        <div class="work-chips">
+          <span class="chip">Information Architecture</span>
+          <span class="chip">Lo-fi Wireframes</span>
+          <span class="chip">Hi-fi Prototype</span>
+        </div>
+      </div>
+      <div class="work-preview">[ Wireframe preview ]</div>
+      <div class="work-arrow">→</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-idx">03</div>
+      <div class="work-body">
+        <div class="work-tag">Design System · Collaborative</div>
+        <div class="work-name">Pulse — Component Library</div>
+        <p class="work-desc">Built a shared Figma component library for a 4-person student team, including auto-layout variants, interactive states, and prototype-ready connections for 3 different project briefs.</p>
+        <div class="work-chips">
+          <span class="chip">Component Design</span>
+          <span class="chip">Auto Layout</span>
+          <span class="chip">Prototyping</span>
+        </div>
+      </div>
+      <div class="work-preview">[ Components ]</div>
+      <div class="work-arrow">→</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process-bg" id="process">
+  <div class="s-meta">
+    <span class="s-num">ii.</span>
+    <span class="s-title">How I work</span>
+  </div>
+  <div class="process-steps">
+    <div class="p-step">
+      <div class="p-step-num">one</div>
+      <div class="p-step-name">Understand</div>
+      <p class="p-step-desc">Stakeholder interviews, desk research, and user observation to define the real problem — not the assumed one.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-step-num">two</div>
+      <div class="p-step-name">Structure</div>
+      <p class="p-step-desc">User flows, site maps, and low-fidelity wireframes to establish architecture before reaching for colour or polish.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-step-num">three</div>
+      <div class="p-step-name">Prototype</div>
+      <p class="p-step-desc">Interactive Figma or ProtoPie prototypes with realistic transitions, tested with real users in moderated sessions.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-step-num">four</div>
+      <div class="p-step-name">Iterate</div>
+      <p class="p-step-desc">Synthesis of findings into actionable changes. I document decisions so teams can understand the reasoning, not just the outcome.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="s-meta">
+    <span class="s-num">iii.</span>
+    <span class="s-title">About Sandy</span>
+  </div>
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="avatar-block">SA</div>
+      <div class="about-name">Sandy Asawaprecha</div>
+      <div class="about-role">Junior UX Designer</div>
+      <hr class="about-divider">
+      <div class="about-stat"><span class="about-stat-key">Based in</span><span class="about-stat-val">[Your City]</span></div>
+      <div class="about-stat"><span class="about-stat-key">Education</span><span class="about-stat-val">[Your Degree]</span></div>
+      <div class="about-stat"><span class="about-stat-key">Availability</span><span class="about-stat-val">Open to work</span></div>
+    </div>
+    <div>
+      <p class="about-body">
+        I'm a junior UX designer with a focus on wireframing and prototyping — the stage where ideas either gain clarity or fall apart. I'm drawn to this phase because it forces rigour: every screen needs a reason, every interaction needs intent.
+      </p>
+      <p class="about-body">
+        My background in [your field/degree] gave me a strong foundation in [relevant skill], which I bring into every brief. I approach design as a conversation — between the user's needs, the business's goals, and the team building it.
+      </p>
+      <p class="about-body">
+        I'm looking for a junior role where I can contribute to real products, grow alongside experienced designers, and keep learning.
+      </p>
+      <div class="skills-section">
+        <h4>Specialisations</h4>
+        <div class="skills-grid">
+          <span class="skill">Wireframing</span>
+          <span class="skill">Prototyping</span>
+          <span class="skill">User Flows</span>
+          <span class="skill">Interaction Design</span>
+          <span class="skill">Usability Testing</span>
+          <span class="skill">Information Architecture</span>
+          <span class="skill">Design Systems</span>
+          <span class="skill">Figma</span>
+          <span class="skill">ProtoPie</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact" style="background:var(--off)">
+  <div class="contact-split">
+    <div class="contact-heading">
+      Let's build<br>something <i>clear</i><br>together.
+    </div>
+    <div>
+      <div class="contact-list">
+        <a class="contact-item" href="mailto:sandy@example.com">
+          <div><div class="c-label">Email</div><div class="c-value">sandy@example.com</div></div>
+          <span class="c-arrow">→</span>
+        </a>
+        <a class="contact-item" href="#">
+          <div><div class="c-label">LinkedIn</div><div class="c-value">linkedin.com/in/sandy-asawaprecha</div></div>
+          <span class="c-arrow">→</span>
+        </a>
+        <a class="contact-item" href="#">
+          <div><div class="c-label">Portfolio / Behance</div><div class="c-value">behance.net/sandyasa</div></div>
+          <span class="c-arrow">→</span>
+        </a>
+        <a class="contact-item" href="#">
+          <div><div class="c-label">Résumé</div><div class="c-value">Download PDF</div></div>
+          <span class="c-arrow">↓</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Sandy Asawaprecha · Junior UX Designer</span>
+  <span>Wireframes that think. Prototypes that feel.</span>
+</footer>
+
+</body>
+</html>
